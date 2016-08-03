@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head> 
+	<meta name="viewport" content="width=1000px">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>	
+</head>
+   <body>
+      
+      <h3>
+         <a href = "{{ url_for('show_all') }}"> LISTA DE IP'S RICE/NSL</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      <h3>IP List (<a href = "{{ url_for('new') }}">Add a new IP
+         </a>)</h3>
+      
+      <table border="1">
+
+ <div data-role="main" class"ui-content">
+
+        <form>
+                <input id="filterTable-input" data-type="search" placeholder="Global search:">
+        </form>
+        <table id="table" border="1" data-filter="true" data-input="#filterTable-input">
+         <thead>
+            <tr>
+               <th> ID </th>
+	       <th> ADDRESS </th>
+               <th> IN USE? </th>
+               <th> RESPONSIBLE </th>
+               <th> SHORT HOST NAME </th>
+               <th> LONG HOST NAME </th>
+               <th> DESCRIPTION </th>
+               <th> EXTERNAL PARTNER ACCESS </th>
+               <th> ALLOWED PORTS </th>
+	       <th> EDIT </th>
+	       <th> DELETE </th>
+
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for iplist in iplists %}
+               <tr>
+                  <td>{{ iplist.id }} </td>
+                  <td>{{ iplist.address }}</td>
+                  <td>{{ iplist.in_use }} </td>
+                  <td>{{ iplist.responsible }}</td>
+                  <td>{{ iplist.short_host_name }}</td>
+                  <td>{{ iplist.long_host_name }}</td>
+                  <td>{{ iplist.description }}</td>
+                  <td>{{ iplist.external_partner_access }}</td>
+                  <td>{{ iplist.allowed_ports }}</td>
+		  <td><center><input type="image" alt="edit" a href = "{{ url_for('new') }}" img src="{{ url_for('static', filename = 'edit-xxl.png') }}" width="20px" height="20px" border=0></center></td>
+ 		  <td><center><input type="image" alt="delete" img src="{{ url_for('static', filename = 'delete.png') }}" width="20px" height="20px" border=0></center></td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>

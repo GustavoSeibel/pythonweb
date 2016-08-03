@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <h3>IP Address List - Flask SQLAlchemy example</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "address">Address</label><br>
+         <input type = "text" name = "address" placeholder = "address" /><br>
+         <label for = "in_use">In Use?</label><br>
+         <input type = "text" name = "in_use" placeholder = "in_use" /><br>
+         <label for = "responsible">Responsible</label><br>
+         <input type = "text" name = "responsible" placeholder = "responsible" /><br>
+         <label for = "short_host_name">Short Host Name</label><br>
+         <input type = "text" name = "short_host_name" placeholder = "short_host_name" /><br>
+         <label for = "long_host_name">Long Host Name</label><br>
+         <input type = "text" name = "long_host_name" placeholder = "long_host_name" /><br>
+         <label for = "description">Description</label><br>
+         <input type = "text" name = "description" placeholder = "description" /><br>
+         <label for = "external_partner_access">External Partner Access</label><br>
+         <input type = "text" name = "external_partner_access" placeholder = "external_partner_access" /><br>
+         <label for = "allowed_ports">Allowed ports</label><br>
+         <input type = "text" name = "allowed_ports" placeholder = "allowed_ports" /><br>
+         <input type = "submit" value = "Submit" />
+      </form>
+      
+   </body>
+</html>
